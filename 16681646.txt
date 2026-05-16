@@ -1,0 +1,52 @@
+{
+    var int estacionamiento[5][4];
+    var int filas;
+    var int columnas;
+
+    read(filas);
+    read(columnas);
+
+    if (filas >= 0 AND filas < 5) {
+        
+        if (columnas >= 0 AND columnas < 4) {
+            
+            if (estacionamiento[filas][columnas] == 0) {
+                print(0);
+            } else {
+                print(1);
+            }
+
+        } else {
+            print(-1); 
+        }
+
+    } else {
+        print(-1); 
+    }
+}
+
+
+
+
+Explicación de como entiendo el ejercicio y porque use estos elementos del seudocódigo en el algoritmo.
+var int estacionamiento[5][4]: Así declaro la matriz que representa el estacionamiento utilizando la estructura de datos obligatoria. Además de especificar las dimensiones exactas de 5 filas y 4 columnas y mantengo el tamaño al final de la declaración del arreglo como exige el pseudocódigo que usamos en las clases. 
+
+var int filas y var int columnas: De esta forma se crean las variables numéricas enteras para almacenar la posición que el usuario desea consultar y al igual que lo anterior se cumple estrictamente con el formato de declaración exigido, osea: var tipo nombre.
+
+read (filas) y read (columnas): Este es el método usado (casi que un estándar de la clase) para recibir datos mediante la instrucción read o de lectura (variable). El algoritmo primero lee la fila y luego la columna, eliminando lecturas innecesarias de matrices completas.
+
+Para cumplir con la exigencia del enunciado de evaluar las condiciones en un orden específico, hice una estructura de instrucciones if-else  (un if dentro de otro if). En lugar de usar palabras clave ajenas al PDF, escribi llaves { } para marcar el inicio y el fin de lo que se ejecuta en cada condición.
+
+(if (filas >= 0 AND filas < 5) {): Esto se usa para comprobar que la fila ingresada esté dentro del rango válido (índices del 0 al 4). Si es verdadero, se abre la llave {para avanzar al siguiente nivel de validación. Se emplea obligatoriamente con el AND en mayúsculas.
+
+(if (columnas >= 0 AND columnas < 4) {): Aquí se ejecuta únicamente si la fila fue válida. Abre su propia llave { para comprobar que la columna esté dentro de los límites (índices del 0 al 3). 
+
+(if (estacionamiento[filas][columnas] == 0)): Al estar dentro de las dos llaves anteriores, el programa ya sabe que la coordenada existe, entonces hace una verificación mas clara o completa, osea, si el valor guardado en esa celda es 0, significa que el puesto está libre, de lo contrario pasara a un (else), que significa que está ocupado. 
+
+0: Imprimido cuando las coordenadas son válidas y el puesto está libre. 
+1: Imprimido cuando las coordenadas son válidas pero el puesto ya está ocupado. 
+-1: Se ubica en las secciones else correspondientes. Si la validación de la columna falla, el else de esa llave imprime -1. Si es la fila la que falla desde el principio, el flujo salta directamente al else de la llave exterior e imprime -1.
+
+Comentarios de interés:
+Pense en usar un ciclo "FOR" pero lo vi innecesario porque el ejercicio no pedia contar otras cosas como cuántos puestos libres quedan en total? es decir no tenia que hacer un recorrido por toda la matriz osea celda por celda.
+Cabe destacar que si se intenta evaluar los rangos usando la sintaxis de Python, se muestra error de sintaxis, y aunque no se indica cual es el error, igualmente no se puede ejecutar (Lo intente).
